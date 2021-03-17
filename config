@@ -1,0 +1,5 @@
+[localrepo]
+enable = yes
+
+[work]
+workdir = /home/marco/.aurpm/work/
