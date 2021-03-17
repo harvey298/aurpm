@@ -33,9 +33,8 @@ whereshouldpackagebe = 'null'
 whereispackage = 'null'
 giturl = 'null'
 os.chdir(whereami)
-config.read('config')
 print('my work dir ' + whereami)
-workdir = config['work']['workdir']
+workdir = whereami + '/work'
 
 if os.getuid() == 0:
     print("Oh welp, I've been given super powers! but with great power comes great privileges. Don't run AURPM with sudo")
@@ -48,7 +47,7 @@ helpmenu = """Useage: AURPM <operation> [...]
     AURPM -ie <package> Installs AUR packages and allows editing of the PKGBUILD file
     AURPM -ce <package> complies the package and edits PKDBUILD
     AURPM -e <package> downloads the package and edits PKGBUILD
-    AURPM -gpg <key> is a short cut got gpg --search-keys
+    AURPM -gpg <key> is a short cut fot gpg --search-keys
     """
 
 def feedbackchecker(given):
