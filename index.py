@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/python3
 
 #--------------------------------------------------------------------------#
 #                               Made by Harvey298                          #
@@ -6,14 +6,19 @@
 #                                                                          #
 #--------------------------------------------------------------------------#
 
+# Main imports
 import os
-from subprocess import run, PIPE, STDOUT, Popen
 import sys
 from sys import argv
+from subprocess import run, PIPE, STDOUT, Popen
 import time
+
+# Import urllib
 import urllib.request, urllib.error
 from urllib.request import urlopen
 from urllib.error import URLError
+
+# Other imports
 import json
 import configparser
 import fnmatch
