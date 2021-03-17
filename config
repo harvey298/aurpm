@@ -1,5 +1,7 @@
 [localrepo]
 enable = yes
 
+# For Example the user is marco, the work dir tells aurpm where it should store the aur builds
+
 [work]
 workdir = /home/marco/.aurpm/work/
