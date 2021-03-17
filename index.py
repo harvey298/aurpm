@@ -39,7 +39,7 @@ whereispackage = 'null'
 giturl = 'null'
 os.chdir(whereami)
 print('my work dir ' + whereami)
-workdir = whereami + '/work'
+workdir = whereami + '/work/'
 
 if os.getuid() == 0:
     print("Oh welp, I've been given super powers! but with great power comes great privileges. Don't run AURPM with sudo")
@@ -218,12 +218,12 @@ def createrepo(whereami):
     os.chdir(whereami)
     os.mkdir('repo')
 
-if config['localrepo']['enable'] == 'yes':
-    if os.path.exists(whereami + '/repo') == False:
-        createrepo(whereami)
-        print("the Repo directory wasn't found so one was created")
-else:
-    print('Local Repo disabled')
+#if config['localrepo']['enable'] == 'yes':
+#    if os.path.exists(whereami + '/repo') == False:
+#        createrepo(whereami)
+#        print("the Repo directory wasn't found so one was created")
+#else:
+#    print('Local Repo disabled')
 
 try:
     # Look away! Spag code!
@@ -232,7 +232,7 @@ try:
         print("Searching the AUR")
         try:
             package = argv[2]
-            localrepo(package)
+            #localrepo(package)
             #getaur(package)
         except IndexError:
             print("Oh No! you haven't told me what package you would like! I cannot search without this!!" + str(sys.exc_info()))
