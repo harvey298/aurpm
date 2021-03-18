@@ -177,7 +177,7 @@ def pkgupdate():
     garb = 0
     print('updating all packages!')
     os.chdir(workdir)
-    os.remove("packages.txt") 
+    #os.remove("packages.txt") 
     for roots,dirs,files in os.walk(workdir):
         fi = roots,files 
         p1u = fnmatch.filter(files, '*.pkg.tar.zst')
@@ -199,8 +199,8 @@ def pkgupdate():
             p2usr3 = p2usr2.replace("]", '', 2)
             print(p2usr3)
             p2usr4 = '\n' + p2usr3
-            with open("packages.txt", "a") as pkginfo:
-                pkginfo.write(p2usr4)
+            #with open("packages.txt", "a") as pkginfo:
+            #    pkginfo.write(p2usr4)
             pkginfo.close()
             tmpfs1 = p2usr4.replace(workdir, '', 2)
             tmpfs2 = tmpfs1.replace(rtxt1t, '', 2)
@@ -209,7 +209,7 @@ def pkgupdate():
             print(tmpfs3)
             os.system('cd ' + roots + ' && git pull')
             os.system('cd ' + roots + ' && makepkg -sic')
-    pushrepo()
+   # pushrepo()
 
 
 
