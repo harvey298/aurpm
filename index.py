@@ -40,6 +40,7 @@ giturl = 'null'
 os.chdir(whereami)
 print('my work dir ' + whereami)
 workdir = whereami + '/work/'
+enrepo = yes
 
 if os.getuid() == 0:
     print("Oh welp, I've been given super powers! but with great power comes great privileges. Don't run AURPM with sudo")
@@ -162,7 +163,7 @@ def localrepo(package):
                 os.system("bash -x sigrepo.sh " + p2usr3)
 
 def pushrepo():
-    if config['localrepo']['enable'] == 'yes':
+    if enrepo == 'yes':
         if os.path.exists(whereami + '/repo') == False:
             createrepo(whereami)
             print("the Repo directory wasn't found so one was created")
@@ -246,6 +247,9 @@ try:
             begins1(package)
         except IndexError:
             print("Oh No! you haven't told me what package you would like!" + str(sys.exc_info()))
+            print("Please state the package you want to install!")
+            package = input("Package: ")
+            begins1(package)
     elif argv[1] == 'r':
         pushrepo()
     elif argv[1] == 'rm':
@@ -289,5 +293,9 @@ try:
         gpg(key)
 except IndexError:
     print("Oh No! something went wrong! have you tried AURPM -h yet? or have you forgot a argument?" + str(sys.exc_info()))
+    print(helpmenu)
+    print("Assuming you want to install a package!")
+    package = input("Package: ")
+    begins1(package)
 except SystemExit:
     print("I have exited due to an issuse seen above")
