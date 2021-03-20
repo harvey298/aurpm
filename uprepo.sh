@@ -1,2 +1,2 @@
 #!/bin/bash
-repo-add -n $HOME/.aurpm/repo/aurpm work/*/*.pkg.tar.zst
+repo-add -n -R $HOME/.aurpm/repo/aurpm.db.tar.xz work/*/*.pkg.tar.zst

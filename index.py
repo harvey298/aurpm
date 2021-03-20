@@ -40,7 +40,7 @@ giturl = 'null'
 os.chdir(whereami)
 print('my work dir ' + whereami)
 workdir = whereami + '/work/'
-enrepo = yes
+enrepo = "yes"
 
 if os.getuid() == 0:
     print("Oh welp, I've been given super powers! but with great power comes great privileges. Don't run AURPM with sudo")
@@ -133,13 +133,12 @@ def localrepo(package):
     global whereispackage
     global whereami
     garb = 0
-    if config['localrepo']['enable'] == 'yes':
+    if enrepo == 'yes':
         if os.path.exists(whereami + '/repo') == False:
             createrepo(whereami)
             print("the Repo directory wasn't found so one was created")
         # *.pkg.tar.zst
-            os.chdir(workdir)
-        #os.remove("packages.txt") 
+            os.chdir(workdir) 
         for roots,dirs,files in os.walk(workdir):
             fi = roots,files
             wildcard = '*.pkg.tar.zst'
@@ -160,7 +159,7 @@ def localrepo(package):
                 p2usr3 = p2usr2.replace("]", '', 2)
                 print(p2usr3)
                 os.chdir(whereami)
-                os.system("bash -x sigrepo.sh " + p2usr3)
+                os.system("bash -x repoadd1.sh " + p2usr3)
 
 def pushrepo():
     if enrepo == 'yes':
@@ -210,7 +209,7 @@ def pkgupdate():
             print(tmpfs3)
             os.system('cd ' + roots + ' && git pull')
             os.system('cd ' + roots + ' && makepkg -sic')
-   # pushrepo()
+    pushrepo()
 
 
 
@@ -233,6 +232,7 @@ try:
         print("Searching the AUR")
         try:
             package = argv[2]
+            pushrepo()
             #localrepo(package)
             #getaur(package)
         except IndexError:
