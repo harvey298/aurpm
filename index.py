@@ -211,8 +211,13 @@ def pkgupdate():
             os.system('cd ' + roots + ' && makepkg -sic')
 #    pushrepo()
 
-
-
+def repoinstall():
+    txt = """"Server = file://""" + whereami + """/repo/"""
+    print("I am not at fault for any problems that this makes, I have created a backup of your pacman config in " + whereami + "/pacman.conf.bak")
+    os.system("sudo cp /etc/pacman.conf " + whereami + "/pacman.conf.bak")
+    #os.chdir(whereami)
+    os.chdir("/home/marco/etc/aurpm")
+    os.system("sudo bash -x ./installrepo.sh " + txt)
 
 def createrepo(whereami):
     os.chdir(whereami)
@@ -230,6 +235,7 @@ try:
     if argv[1] == '-S':
         print("WIP")
         print("Searching the AUR")
+        repoinstall()
         try:
             package = argv[2]
             pushrepo()
