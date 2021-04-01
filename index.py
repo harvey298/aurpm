@@ -209,7 +209,7 @@ def pkgupdate():
             print(tmpfs3)
             os.system('cd ' + roots + ' && git pull')
             os.system('cd ' + roots + ' && makepkg -sic')
-#    pushrepo()
+    pushrepo()
 
 def repoinstall():
     txt = """"Server = file://""" + whereami + """/repo/"""
