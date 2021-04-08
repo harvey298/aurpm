@@ -201,14 +201,17 @@ def pkgupdate():
             p2usr4 = '\n' + p2usr3
             #with open("packages.txt", "a") as pkginfo:
             #    pkginfo.write(p2usr4)
-            pkginfo.close()
+            #pkginfo.close()
             tmpfs1 = p2usr4.replace(workdir, '', 2)
             tmpfs2 = tmpfs1.replace(rtxt1t, '', 2)
             print(tmpfs2)
             tmpfs3 = tmpfs2.replace(tmpfs2 + '-', '', 1)
             print(tmpfs3)
-            os.system('cd ' + roots + ' && git pull')
-            os.system('cd ' + roots + ' && makepkg -sic')
+            update = os.system('cd ' + roots + ' && git pull')
+            if update == "Already up to date.":
+                print("Not Calling pacman")
+            else:
+                os.system('cd ' + roots + ' && makepkg -sic')
     pushrepo()
 
 
