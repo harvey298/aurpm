@@ -30,3 +30,7 @@ This product is licensed under the [MIT License](https://github.com/harvey298/au
 ## Contributing
 
 Pull requests are encouraged. For major changes with the project please open an issue about what you would like to change. Thank you for participating in the development of this AUR package manager!
+
+## Other mentions
+
+This is the python version of aurpm there is a C version made by [@Insert-Creative-Name-Here](https://github.com/Insert-Creative-Name-Here), please do check them out they can do a better job then I can at this :), I also have plans to work on this even more and maybe make a Rust version. [aurpm (The version made in C)](https://github.com/Insert-Creative-Name-Here/aurpm)
