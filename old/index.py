@@ -183,28 +183,36 @@ def pkgupdate():
         if p1u == []:
             garb += 1
         else:
-            print('Match!')
-            print(roots,p1u)
+            os.chdir(whereami)
+            #print('Match!')
+            #print(roots,p1u)
             p2u = []
             p2u.append(roots + '/')
             rtxt1 = []
             rtxt1.append(p1u)
             p2u.append(p1u)
-            print(p2u)
+            #print(p2u)
             rtxt1t = ''.join(map(str, rtxt1))
             p2us = ''.join(map(str, p2u))
             p2usr1 = p2us.replace('[', '', 2)
-            p2usr2 = p2usr1.replace("'", '', 2)
+            p2usr2 = p2usr1.replace("'", '', 2)  # os.system('git pull') # stdout=PIPE, stderr=PIPE, 
             p2usr3 = p2usr2.replace("]", '', 2)
-            print(p2usr3)
+            #print(p2usr3)
             p2usr4 = '\n' + p2usr3
             tmpfs1 = p2usr4.replace(workdir, '', 2)
             tmpfs2 = tmpfs1.replace(rtxt1t, '', 2)
-            print(tmpfs2)
-            tmpfs3 = tmpfs2.replace(tmpfs2 + '-', '', 1)
-            print(tmpfs3)
-            os.system('cd ' + roots + ' && git pull')
-            os.system('cd ' + roots + ' && makepkg -sic')
+            #print(tmpfs2)
+            #tmpfs3 = tmpfs2.replace(tmpfs2 + '-', '', 1)
+            #print(roots)
+            os.chdir(roots)
+            update = run(["git","pull"], capture_output=True, text=True) 
+            expectedresult = "Already up to date.\n"
+            if str(update.stdout) == str(expectedresult):
+                print("Not Calling pacman")
+            else:
+                print("should install")
+                os.system("rm " + tmpfs2)
+                os.system('cd ' + roots + ' && makepkg -sic')
     pushrepo()
 
 def repoinstall():
@@ -222,8 +230,8 @@ try:
     # Look away! Spag code!
     if argv[1] == '-S':
         print("WIP")
-        print("Searching the AUR")
-        repoinstall()
+        print("Currently not working!")
+        #repoinstall()
         try:
             package = argv[2]
             #pushrepo()

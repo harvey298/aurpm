@@ -1,7 +1,6 @@
-import os,sys,time,json,configparser
+import os,sys,time
 from arg import handle
 from index import index
-
 from util import permission_check
 
 #pkg = "null"
