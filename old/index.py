@@ -176,8 +176,7 @@ def pushrepo():
 def pkgupdate():
     garb = 0
     print('updating all packages!')
-    os.chdir(workdir)
-    #os.remove("packages.txt") 
+    os.chdir(workdir) 
     for roots,dirs,files in os.walk(workdir):
         fi = roots,files 
         p1u = fnmatch.filter(files, '*.pkg.tar.zst')
@@ -199,9 +198,6 @@ def pkgupdate():
             p2usr3 = p2usr2.replace("]", '', 2)
             print(p2usr3)
             p2usr4 = '\n' + p2usr3
-            #with open("packages.txt", "a") as pkginfo:
-            #    pkginfo.write(p2usr4)
-            #pkginfo.close()
             tmpfs1 = p2usr4.replace(workdir, '', 2)
             tmpfs2 = tmpfs1.replace(rtxt1t, '', 2)
             print(tmpfs2)
@@ -215,20 +211,12 @@ def repoinstall():
     txt = """"Server = file://""" + whereami + """/repo/"""
     print("I am not at fault for any problems that this makes, I have created a backup of your pacman config in " + whereami + "/pacman.conf.bak")
     os.system("sudo cp /etc/pacman.conf " + whereami + "/pacman.conf.bak")
-    #os.chdir(whereami)
     os.chdir("/home/marco/etc/aurpm")
-    os.system("sudo bash -x ./installrepo.sh " + txt)
+    os.system("sudo bash -x ./installrepo.sh")
 
 def createrepo(whereami):
     os.chdir(whereami)
     os.mkdir('repo')
-
-#if config['localrepo']['enable'] == 'yes':
-#    if os.path.exists(whereami + '/repo') == False:
-#        createrepo(whereami)
-#        print("the Repo directory wasn't found so one was created")
-#else:
-#    print('Local Repo disabled')
 
 try:
     # Look away! Spag code!
@@ -238,9 +226,8 @@ try:
         repoinstall()
         try:
             package = argv[2]
-            pushrepo()
-            #localrepo(package)
-            #getaur(package)
+            #pushrepo()
+            repoinstall()
         except IndexError:
             print("Oh No! you haven't told me what package you would like! I cannot search without this!!" + str(sys.exc_info()))
     elif argv[1] == '-h':
@@ -268,8 +255,6 @@ try:
         except IndexError:
             print("Oh No! you haven't told me what package you would like!" + str(sys.exc_info()))
     elif argv[1] == '-e':
-        #global whereispackage
-        #global giturl
         package = argv[2]
         giturl = "https://aur.archlinux.org/" + package + ".git"
         print('Downloading the package!')
