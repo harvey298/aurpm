@@ -1,19 +1,19 @@
-pub mod aurUse {
+pub mod aur_use {
     use reqwest;
     use serde::Deserialize;    
 
     #[derive(Debug, Deserialize)]
     #[serde(rename_all = "camelCase")] 
-    pub struct aurResponse {
+    pub struct AurResponse {
         pub version: i16,
         pub r#type: String,
         pub resultcount: i32,
     }
 
-    pub async fn DoesPkgExist(pkgName: &str) -> Result<aurResponse, reqwest::Error> { //Box<dyn std::error::Error>
-        let resp: aurResponse = reqwest::get(pkgName)
+    pub async fn does_pkg_exist(pkg_name: &str) -> Result<AurResponse, reqwest::Error> { //Box<dyn std::error::Error>
+        let resp: AurResponse = reqwest::get(pkg_name)
         .await?
-        .json::<aurResponse>()
+        .json::<AurResponse>()
         .await?;
         Ok(resp)
     }

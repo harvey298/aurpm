@@ -1,7 +1,6 @@
 pub mod pkgmanagement {
     use std::{env, process::{Child, Command}};
     use std::path::Path;
-    use std::fs;
 
     pub fn build(pkg_name: String) {
         let key = "HOME";
@@ -9,7 +8,7 @@ pub mod pkgmanagement {
         let pkg_url: &str = &pkg_url_tmp[..];
         match env::var(key) {
             Ok(val) => {
-                let working_dir_tmp: String = val + &"/aurpm/work/".to_string();
+                let working_dir_tmp: String = val + &"/.aurpm/work/".to_string();
                 let working_dir = Path::new(&working_dir_tmp[..]);
                 //println!("changing working directory to {}!", working_dir.display());
                 if working_dir.exists() == false {

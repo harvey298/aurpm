@@ -46,6 +46,7 @@ and
  - Git
  - [Python 3.7+](https://www.python.org/downloads/)
  - [Pyinstaller](https://www.pyinstaller.org/) (make)
+ - [harvey's colour-lib](https://github.com/harvey298/colour-lib) (make)
 
 ### Make Instructions
 
