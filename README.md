@@ -13,49 +13,24 @@
 3. [Contributing](#contributing)
 
 ### Current useability
-As for right now I am refactoring aurpm and current can only install packages
+As for right now I rewriting aurpm in Rust, it works (ish)
+its working directory is `$HOME/.aurpm/work`
 
-How to Install:
-"""
-aurpm -S [PKG Name]
-"""
+If you find any issues please do make a issue with the error message!
 
-if you are currently having issues with this beta release (Yes I'm calling it a beta release) please feel free to use the code in the old directory!!
-
-you can find a UNTESTED build of aurpm in the dist directory!
-
-## Config
-In this version of aurpm we have a config (optional)
-
-the config can grant some more features such as using /tmp as its work directory
-it can be found along side the source code.
-
-To note by default (default being their is no config present)
-all in testing features are disabled such as using /tmp
-
-if you wish to use the new features, just copy the config to the accepted config directorys they being
-"""
-$HOME/.config/aurpm/aurpm.conf
-"""
-and
-"""
-$HOME/.aurpm/aurpm.conf
-"""
-
+How to Install a package:
+`aurpm -S [package Name]`
 
 ## Install
 
 ### Prerequisites
 
- - [Git](https://www.nodejs.org/en/download/)
- - [Python 3.7+](https://www.python.org/downloads/)
- - [Pyinstaller](https://www.pyinstaller.org/) (make)
+ - Git
+ - [Rust - Arch Linux Package](https://archlinux.org/packages/?name=rust) (make) | [Rust - Website](https://www.rust-lang.org/) (make)
 
 ### Make Instructions
 
-you must have Pyinstaller to make this, you can execute the make file using make or running Bash -x makefile
-
-this is meant to replace the file index.py!!
+you can run `cargo build --release` or you can run `make`
 
 ### Installation Instructions
 

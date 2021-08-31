@@ -1,11 +1,6 @@
-main:
-	pyinstaller --clean --specpath build/specs -n aurpm -F src/main.py
-clean:
-	rm -r dist
-	rm -r build
-	rm -r src/__pycache__/
-	rm *.spec
+build:
+	@cargo build --release
+	@echo "The files you need can be found at target/release"
 
-install:
-	pyinstaller --clean --specpath build/specs -n aurpm -F src/main.py
-	sudo cp dist/aurpm /usr/bin/
+clean:
+	@cargo clean
