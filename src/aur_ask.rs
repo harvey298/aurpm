@@ -10,7 +10,7 @@ pub mod aur_use {
         pub resultcount: i32,
     }
 
-    pub async fn does_pkg_exist(pkg_name: &str) -> Result<AurResponse, reqwest::Error> { //Box<dyn std::error::Error>
+    pub async fn does_pkg_exist(pkg_name: &str) -> Result<AurResponse, reqwest::Error> {
         let resp: AurResponse = reqwest::get(pkg_name)
         .await?
         .json::<AurResponse>()

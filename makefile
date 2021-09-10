@@ -4,3 +4,8 @@ build:
 
 clean:
 	@cargo clean
+
+install:
+	@cargo build --release
+	sudo cp target/release /usr/bin/aurpm
+	@echo "aurpm is now installed on your system!"

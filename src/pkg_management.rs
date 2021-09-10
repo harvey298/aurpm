@@ -29,5 +29,9 @@ pub mod pkgmanagement {
         }
         
     }
+
+    pub fn update(pkg_dir: &str) {
+        
+    }
     
 }
