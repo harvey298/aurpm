@@ -14,7 +14,7 @@
 
 ### Current useability
 As for right now I rewriting aurpm in Rust, it works (ish)
-its working directory is `$HOME/.aurpm/work`
+its working directory is `~/.aurpm/work`
 
 If you find any issues please do make a issue with the error message!
 
