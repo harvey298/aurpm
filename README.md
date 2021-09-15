@@ -26,7 +26,7 @@ How to Install a package:
 ### Prerequisites
 
  - Git
- - [Rust - Arch Linux Package](https://archlinux.org/packages/?name=rust) (make) | [Rust - Website](https://www.rust-lang.org/) (make)
+ - [Rust - Arch Linux Package (rustup)](https://archlinux.org/packages/community/x86_64/rustup/) (make) | [Rust - Website](https://www.rust-lang.org/) (make)
 
 ### Make Instructions
 
