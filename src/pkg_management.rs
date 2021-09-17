@@ -10,12 +10,9 @@ pub mod pkgmanagement {
             Ok(val) => {
                 let working_dir_tmp: String = val + &"/.aurpm/work/".to_string();
                 let working_dir = Path::new(&working_dir_tmp[..]);
-                //println!("changing working directory to {}!", working_dir.display());
                 if working_dir.exists() == false {
                     Command::new("mkdir").arg("-p").arg(&working_dir_tmp[..]).spawn().expect("Failed to run command!").wait().unwrap();
                 }
-                //assert!(env::set_current_dir(&working_dir).is_ok());
-                //println!("Successfully changed working directory to {}!", working_dir.display());
                 let mut git_clone = Command::new("git").current_dir(&working_dir_tmp[..]).arg("clone").arg(pkg_url).spawn().expect("failed to execute process");
                 git_clone.wait().unwrap();
                 println!("Building!");
