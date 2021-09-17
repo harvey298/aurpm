@@ -1,0 +1,17 @@
+[make]
+# must be a dir or "default"
+# if default it will build at ~/.aurpm/work/
+makeLocation = "default"
+
+# TO BE PORTED FROM PYTHON
+# this should be a aurpm-lite feature but I like it here too
+
+# When aurpm is in daemon (by starting systemd unit), it will check for aur updates during system boot updates
+# once the system is booted it will make the packages that need updating (can blacklist and/or whitelist packages)
+[deamon] # NOT IMPLEMENTED YET DO NOT USE!!!!
+# if repo is enabled after the aurpm-daemon has made the packages it will update the aurpm local repo
+aurpmRepo = false
+# enable if u want the aurpm report to be on another machine
+externAurpmRepo = false
+# IPv4 address of the external pc
+externAurpmRepoLoc = "127.0.0.1"

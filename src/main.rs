@@ -1,8 +1,10 @@
 mod aur_ask;
 mod pkg_management;
+mod term_output;
 
 use std::{env};
 
+use crate::term_output::termUtil::{term_Out, term_Out_Err};
 use crate::aur_use::AurResponse;
 use crate::aur_ask::aur_use;
 use crate::pkg_management::pkgmanagement;
@@ -11,9 +13,14 @@ use crate::pkg_management::pkgmanagement;
 async fn main() {
     let args: Vec<String> = env::args().collect();
     if args[1].contains("-S") {
+        term_Out("installing package!");
         let pkg_name: &str = &args[2];
         println!("Searching for package named {}!",pkg_name);
         install_pkg(pkg_name).await;
+    
+    } else if args[1].contains("-U") {
+        term_Out("Updating known packages!");
+
     } else if args[1].contains("-H") {
         print_help_msg();
     } else {
