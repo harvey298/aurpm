@@ -23,7 +23,7 @@ pub mod pkgmanagement {
                 println!("Package installed!");
 
             }, 
-            Err(e) => println!("couldn't interpret {}: {}", key, e),
+            Err(e) => println!("Couldn't interpret {}: {}, \nThis is most-likely not a aurpm issues and could be a problem with your system!\nPlease ensure your system has the ${} environment variable", key, e, key),
         }
         
     }
